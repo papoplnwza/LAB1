@@ -126,25 +126,29 @@ int main(void) {
 
 		switch (Input_st) {
 		case (0):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x200) {
 					Input_st = 1;
 				} else if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
+				} else if (ButtonMatrix == 0x2000) {
+					Input_st = 0;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 0;
-//				} else {
-//					Input_st = 12;
+				} else {
+					Input_st = 12;
 				}
 			}
 			break;
 		case (1):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x2) {
 					Input_st = 2;
 				} else if (ButtonMatrix == 0x1000) {
+					Input_st = 0;
+				} else if (ButtonMatrix == 0x2000) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 1;
@@ -154,12 +158,14 @@ int main(void) {
 			}
 			break;
 		case (2):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x400) {
 					Input_st = 3;
 				} else if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
+				} else if (ButtonMatrix == 0x2000) {
+					Input_st = 1;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 2;
 				} else {
@@ -168,12 +174,14 @@ int main(void) {
 			}
 			break;
 		case (3):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x2) {
 					Input_st = 4;
 				} else if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
+				} else if (ButtonMatrix == 0x2000) {
+					Input_st = 2;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 3;
 				} else {
@@ -182,12 +190,14 @@ int main(void) {
 			}
 			break;
 		case (4):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x8) {
 					Input_st = 5;
 				} else if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
+				} else if (ButtonMatrix == 0x2000) {
+					Input_st = 3;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 4;
 				} else {
@@ -196,12 +206,14 @@ int main(void) {
 			}
 			break;
 		case (5):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x20) {
 					Input_st = 6;
 				} else if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
+				} else if (ButtonMatrix == 0x2000) {
+					Input_st = 4;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 5;
 				} else {
@@ -210,12 +222,14 @@ int main(void) {
 			}
 			break;
 		case (6):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x8) {
 					Input_st = 7;
 				} else if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
+				} else if (ButtonMatrix == 0x2000) {
+					Input_st = 5;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 6;
 				} else {
@@ -224,12 +238,14 @@ int main(void) {
 			}
 			break;
 		case (7):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x8) {
 					Input_st = 8;
 				} else if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
+				} else if (ButtonMatrix == 0x2000) {
+					Input_st = 6;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 7;
 				} else {
@@ -238,12 +254,14 @@ int main(void) {
 			}
 			break;
 		case (8):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x8) {
 					Input_st = 9;
 				} else if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
+				} else if (ButtonMatrix == 0x2000) {
+					Input_st = 7;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 8;
 				} else {
@@ -252,12 +270,14 @@ int main(void) {
 			}
 			break;
 		case (9):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x400) {
 					Input_st = 10;
 				} else if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
+				} else if (ButtonMatrix == 0x2000) {
+					Input_st = 8;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 9;
 				} else {
@@ -266,12 +286,14 @@ int main(void) {
 			}
 			break;
 		case (10):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x200) {
 					Input_st = 11;
 				} else if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
+				} else if (ButtonMatrix == 0x2000) {
+					Input_st = 9;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 10;
 				} else {
@@ -280,19 +302,22 @@ int main(void) {
 			}
 			break;
 		case (11):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x8000) {
-					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 1);
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1);
 				} else if (ButtonMatrix == 0) {
 					Input_st = 11;
+				} else if (ButtonMatrix == 0x2000) {
+					Input_st = 10;
+				} else if (ButtonMatrix == 0x1000) {
+					Input_st = 0;
 				} else {
 					Input_st = 0;
 				}
 			}
 			break;
 		case (12):
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
@@ -396,7 +421,7 @@ static void MX_GPIO_Init(void) {
 	__HAL_RCC_GPIOB_CLK_ENABLE();
 
 	/*Configure GPIO pin Output Level */
-	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, LD2_Pin | GPIO_PIN_10, GPIO_PIN_RESET);
 
 	/*Configure GPIO pin Output Level */
 	HAL_GPIO_WritePin(GPIOB,
@@ -409,12 +434,12 @@ static void MX_GPIO_Init(void) {
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-	/*Configure GPIO pin : LD2_Pin */
-	GPIO_InitStruct.Pin = LD2_Pin;
+	/*Configure GPIO pins : LD2_Pin PA10 */
+	GPIO_InitStruct.Pin = LD2_Pin | GPIO_PIN_10;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 	/*Configure GPIO pins : PA7 PA9 */
 	GPIO_InitStruct.Pin = GPIO_PIN_7 | GPIO_PIN_9;

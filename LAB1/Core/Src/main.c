@@ -54,8 +54,8 @@ struct PortPin L[4] = { { GPIOA, GPIO_PIN_9 }, { GPIOC, GPIO_PIN_7 }, { GPIOB,
 GPIO_PIN_6 }, { GPIOA, GPIO_PIN_7 } };
 
 uint16_t ButtonMatrix = 0, ButtonMatrix_L = 0;
-int Input_st = 0;
-int CLK_F = 0;
+int Input_st = 0, state_st = 0;
+int CLK_F = 0, M_c = 0;
 
 /* USER CODE END PV */
 
@@ -113,7 +113,7 @@ int main(void) {
 
 		static uint32_t timestamp = 0;
 		if (HAL_GetTick() >= timestamp) {
-			timestamp = HAL_GetTick() + 100;
+			timestamp = HAL_GetTick() + 50;
 			ReadMatrixButtton_1Row();
 		}
 
@@ -126,6 +126,7 @@ int main(void) {
 
 		switch (Input_st) {
 		case (0):
+			state_st = 0;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x200) {
@@ -133,6 +134,8 @@ int main(void) {
 				} else if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0x2000) {
+					Input_st = 0;
+				} else if (ButtonMatrix == 0x8000) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 0;
@@ -142,6 +145,7 @@ int main(void) {
 			}
 			break;
 		case (1):
+			state_st = 1;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x2) {
@@ -150,6 +154,8 @@ int main(void) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0x2000) {
 					Input_st = 0;
+				} else if (ButtonMatrix == 0x8000) {
+					Input_st = 1;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 1;
 				} else {
@@ -158,6 +164,7 @@ int main(void) {
 			}
 			break;
 		case (2):
+			state_st = 2;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x400) {
@@ -166,6 +173,8 @@ int main(void) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0x2000) {
 					Input_st = 1;
+				} else if (ButtonMatrix == 0x8000) {
+					Input_st = 2;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 2;
 				} else {
@@ -174,6 +183,7 @@ int main(void) {
 			}
 			break;
 		case (3):
+			state_st = 3;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x2) {
@@ -182,6 +192,8 @@ int main(void) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0x2000) {
 					Input_st = 2;
+				} else if (ButtonMatrix == 0x8000) {
+					Input_st = 3;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 3;
 				} else {
@@ -190,6 +202,7 @@ int main(void) {
 			}
 			break;
 		case (4):
+			state_st = 4;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x8) {
@@ -198,6 +211,8 @@ int main(void) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0x2000) {
 					Input_st = 3;
+				} else if (ButtonMatrix == 0x8000) {
+					Input_st = 4;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 4;
 				} else {
@@ -206,6 +221,7 @@ int main(void) {
 			}
 			break;
 		case (5):
+			state_st = 5;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x20) {
@@ -214,6 +230,8 @@ int main(void) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0x2000) {
 					Input_st = 4;
+				} else if (ButtonMatrix == 0x8000) {
+					Input_st = 5;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 5;
 				} else {
@@ -222,6 +240,7 @@ int main(void) {
 			}
 			break;
 		case (6):
+			state_st = 6;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x8) {
@@ -230,6 +249,8 @@ int main(void) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0x2000) {
 					Input_st = 5;
+				} else if (ButtonMatrix == 0x8000) {
+					Input_st = 6;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 6;
 				} else {
@@ -238,6 +259,7 @@ int main(void) {
 			}
 			break;
 		case (7):
+			state_st = 7;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x8) {
@@ -246,6 +268,8 @@ int main(void) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0x2000) {
 					Input_st = 6;
+				} else if (ButtonMatrix == 0x8000) {
+					Input_st = 7;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 7;
 				} else {
@@ -254,6 +278,7 @@ int main(void) {
 			}
 			break;
 		case (8):
+			state_st = 8;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x8) {
@@ -262,6 +287,8 @@ int main(void) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0x2000) {
 					Input_st = 7;
+				} else if (ButtonMatrix == 0x8000) {
+					Input_st = 8;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 8;
 				} else {
@@ -270,6 +297,7 @@ int main(void) {
 			}
 			break;
 		case (9):
+			state_st = 9;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x400) {
@@ -278,6 +306,8 @@ int main(void) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0x2000) {
 					Input_st = 8;
+				} else if (ButtonMatrix == 0x8000) {
+					Input_st = 9;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 9;
 				} else {
@@ -286,6 +316,7 @@ int main(void) {
 			}
 			break;
 		case (10):
+			state_st = 10;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x200) {
@@ -294,6 +325,8 @@ int main(void) {
 					Input_st = 0;
 				} else if (ButtonMatrix == 0x2000) {
 					Input_st = 9;
+				} else if (ButtonMatrix == 0x8000) {
+					Input_st = 10;
 				} else if (ButtonMatrix == 0) {
 					Input_st = 10;
 				} else {
@@ -302,6 +335,7 @@ int main(void) {
 			}
 			break;
 		case (11):
+			state_st = 11;
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x8000) {
 					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1);
@@ -321,7 +355,15 @@ int main(void) {
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
+				} else if (ButtonMatrix == 0x8000) {
+					Input_st = 12;
+				} else if (M_c == 0 && ButtonMatrix == 0x2000) {
+					Input_st = state_st;
+				} else if (ButtonMatrix == 0x2000) {
+					M_c -= 1;
+					Input_st = 12;
 				} else {
+					M_c++;
 					Input_st = 12;
 				}
 			}

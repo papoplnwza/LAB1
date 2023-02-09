@@ -47,11 +47,15 @@ struct PortPin {
 	uint16_t PIN;
 };
 
-struct PortPin R[4] = { { GPIOB, GPIO_PIN_13 }, { GPIOB, GPIO_PIN_14 }, { GPIOB,
-GPIO_PIN_15 }, { GPIOB, GPIO_PIN_1 } };
+struct PortPin R[4] = { { GPIOB, GPIO_PIN_13 },
+						{ GPIOB, GPIO_PIN_14 },
+						{ GPIOB, GPIO_PIN_15 },
+						{ GPIOB, GPIO_PIN_1 } };
 
-struct PortPin L[4] = { { GPIOA, GPIO_PIN_9 }, { GPIOC, GPIO_PIN_7 }, { GPIOB,
-GPIO_PIN_6 }, { GPIOA, GPIO_PIN_7 } };
+struct PortPin L[4] = { { GPIOA, GPIO_PIN_9 },
+						{ GPIOC, GPIO_PIN_7 },
+						{ GPIOB, GPIO_PIN_6 },
+						{ GPIOA, GPIO_PIN_7 } };
 
 uint16_t ButtonMatrix = 0, ButtonMatrix_L = 0;
 int Input_st = 0, state_st = 0;
@@ -113,7 +117,7 @@ int main(void) {
 
 		static uint32_t timestamp = 0;
 		if (HAL_GetTick() >= timestamp) {
-			timestamp = HAL_GetTick() + 50;
+			timestamp = HAL_GetTick() + 10;
 			ReadMatrixButtton_1Row();
 		}
 
@@ -346,7 +350,7 @@ int main(void) {
 				} else if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
 				} else {
-					Input_st = 0;
+					Input_st = 12;
 				}
 			}
 			break;
@@ -355,6 +359,7 @@ int main(void) {
 			if (CLK_F == 1) {
 				if (ButtonMatrix == 0x1000) {
 					Input_st = 0;
+					M_c = 0;
 				} else if (ButtonMatrix == 0x8000) {
 					Input_st = 12;
 				} else if (M_c == 0 && ButtonMatrix == 0x2000) {
